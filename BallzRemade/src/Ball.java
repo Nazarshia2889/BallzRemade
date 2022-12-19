@@ -137,4 +137,3 @@ public class Ball extends Block
 			return (super.toString() + getXSpeed() + " " + getYSpeed());
 		}
 	}
-}
