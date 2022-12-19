@@ -6,7 +6,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-class BlinkyBall extends Launcher
+class BlinkyBall extends Ball
 {
 
    //constructors
