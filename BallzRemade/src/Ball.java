@@ -7,100 +7,134 @@ import java.awt.Graphics;
 
 public class Ball extends Block
 {
-	private int xSpeed;
-	private int ySpeed;
+		private int size;
+		private int xSpeed;
+		private int ySpeed;
+		private boolean exists;
 
-	public Ball()
-	{
-		super(200,200);
-		xSpeed = 1;
-		ySpeed = 1;
-	}
-
-	//add the other Ball constructors
-	public Ball(int x, int y) {
-		super(x, y);
-		xSpeed = 1;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width) {
-		super(x, y, width);
-		xSpeed = 1;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height) {
-		super(x, y, width, height);
-		xSpeed = 1;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height, Color col) {
-		super(x, y, width, height, col);
-		xSpeed = 1;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height, int newXSpeed, int newYSpeed) {
-		super(x, y, width, height);
-		xSpeed = newXSpeed;
-		ySpeed = newYSpeed;
-	}
-	
-	public Ball(int x, int y, int width, int height, Color col, int newXSpeed, int newYSpeed) {
-		super(x, y, width, height, col);
-		xSpeed = newXSpeed;
-		ySpeed = newYSpeed;
-	}
-	
-	
-	   
-   //add the set methods
-	
-   public int getXSpeed() {
-	   return xSpeed;
-   }
-   
-   public int getYSpeed() {
-	   return ySpeed;
-   }
-	
-   public void setXSpeed(int newXSpeed) {
-	   xSpeed = newXSpeed;
-   }
-   
-   public void setYSpeed(int newYSpeed) {
-	   ySpeed = newYSpeed;
-   }
-   
-
-   public void moveAndDraw(Graphics window)
-   {
-   	//draw a white ball at old ball location
-	  super.draw(window, Color.WHITE);
-
-      setX(getX() + xSpeed);
-		//setY
-      setY(getY() + ySpeed);
-      super.draw(window, this.getColor());
-
-		//draw the ball at its new location
-   }
-   
-	public boolean equals(Object obj)
-	{
-		if(this.toString().equals(obj.toString())) {
-			return true;
+		public Ball()
+		{
+			super(200,200);
+			xSpeed = 3;
+			ySpeed = 1;
 		}
-		return false;
-	}   
 
-   //add the get methods
+		//add the other Ball constructors
+		public Ball(int x)
+		{
+			super(x, 150, 10, 10, Color.black);
+			xSpeed = 3;
+			ySpeed = 1;
+		}
+		public Ball(int x,int y)
+		{
+			super(x, y, 10, 10, Color.black);
+			xSpeed = 3;
+			ySpeed = 1;
+		}
+		public Ball(int x,int y,int z)
+		{
+			super(x, y, z, z, Color.black);
+			xSpeed = 3;
+			ySpeed = 1;
+		}
+		public Ball(int x,int y,int w,int h, Color c) {
+			super(x, y, w, h, c);
+			xSpeed = 3;
+			ySpeed = 1;
+		}
+		public Ball(int x,int y,int w,int h, Color c, int xs)
+		{
+			super(x, y, w, h, c);
+			xSpeed = xs;
+			ySpeed = 1;
+		}
+		public Ball(int x,int y,int w,int h, Color c, int xs, int ys)
+		{
+			super(x, y, w, h, c);
+			xSpeed = xs;
+			ySpeed = ys;
+		}
+		   
+	   //add the set methods
+	   public void setXSpeed(int xs) {
+		   xSpeed = xs;
+	   }
+	   public void setYSpeed(int ys) {
+		   ySpeed = ys;
+	   }
+	   
+	   public void setSize(int z) {
+		   size = z;
+	   }
+	   
+	   public boolean isExisting() {
+		   return exists;
+	   }
+	   
 
-   //add a toString() method
-	
-	public String toString() {
-		return "xSpeed: " + xSpeed + ", ySpeed: " + ySpeed;
+	   public void moveAndDraw(Graphics window)
+	   {
+	   	//draw a white ball at old ball location
+		   Color temp = window.getColor();
+		   window.setColor(Color.GRAY); // whatever background color is
+		   window.fillOval(getX(), getY(), size, size);
+		   
+
+	      setX(getX()+xSpeed);
+	      setY(getY() + ySpeed);
+	      
+			//draw the ball at its new location
+		  window.setColor(Color.blue);
+		  window.fillOval(getX(), getY(), size, size);
+	      window.setColor(temp);
+	   }
+	   
+	   public void adjustSpeed()
+	   {
+		   if(getX() < 3) {
+				setXSpeed(-xSpeed);
+				setYSpeed(ySpeed);
+			}
+			else if(getX() > 797) {
+				setXSpeed(-xSpeed);
+				setYSpeed(ySpeed);
+			}
+			
+			//see if the ball hits the top or bottom wall 
+			if(!(getY()>=1))
+			{
+				setXSpeed(xSpeed);
+				setYSpeed(-ySpeed);
+			}
+			else if(!(getY()<=560)) {
+				exists = false;
+				setXSpeed(0);
+				setYSpeed(0);
+			}
+	   }
+	   
+		public boolean equals(Object obj)
+		{
+			return super.equals(obj) &&
+					getXSpeed() == ((Ball) obj).getXSpeed() &&
+					getYSpeed() == ((Ball) obj).getYSpeed() ;
+		}   
+
+	   //add the get methods
+		public int getXSpeed(){
+			return xSpeed;
+		}
+		public int getYSpeed(){
+			return ySpeed;
+		}
+		public int getSize(){
+			return size;
+		}
+
+	   //add a toString() method
+		public String toString() {
+			return (super.toString() + getXSpeed() + " " + getYSpeed());
+		}
 	}
 }
