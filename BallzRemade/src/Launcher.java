@@ -5,12 +5,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block
+public class Launcher extends Block
 {
 	private int xSpeed;
 	private int ySpeed;
 
-	public Ball()
+	public Launcher()
 	{
 		super(200,200);
 		xSpeed = 1;
@@ -18,37 +18,37 @@ public class Ball extends Block
 	}
 
 	//add the other Ball constructors
-	public Ball(int x, int y) {
+	public Launcher(int x, int y) {
 		super(x, y);
 		xSpeed = 1;
 		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y, int width) {
+	public Launcher(int x, int y, int width) {
 		super(x, y, width);
 		xSpeed = 1;
 		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y, int width, int height) {
+	public Launcher(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		xSpeed = 1;
 		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y, int width, int height, Color col) {
+	public Launcher(int x, int y, int width, int height, Color col) {
 		super(x, y, width, height, col);
 		xSpeed = 1;
 		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y, int width, int height, int newXSpeed, int newYSpeed) {
+	public Launcher(int x, int y, int width, int height, int newXSpeed, int newYSpeed) {
 		super(x, y, width, height);
 		xSpeed = newXSpeed;
 		ySpeed = newYSpeed;
 	}
 	
-	public Ball(int x, int y, int width, int height, Color col, int newXSpeed, int newYSpeed) {
+	public Launcher(int x, int y, int width, int height, Color col, int newXSpeed, int newYSpeed) {
 		super(x, y, width, height, col);
 		xSpeed = newXSpeed;
 		ySpeed = newYSpeed;
