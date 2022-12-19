@@ -1,4 +1,4 @@
-//(c) A+ Computer Science
+//(c) F- Computer Science
 //www.apluscompsci.com
 //Name -
 
@@ -30,25 +30,25 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 	{
 		//set up all variables related to the game
 //		ball = new Ball(100, 100, 10, 10, Color.RED, 1, 2);
-		ball = new SpeedUpBall(100, 100, 10, 10, Color.RED, xSpeed, ySpeed);
+//		ball = new SpeedUpBall(100, 100, 10, 10, Color.RED, xSpeed, ySpeed);
 		leftPaddle = new Paddle(10, 100, 10, 80, Color.ORANGE, 5);
 		rightPaddle = new Paddle(780, 100, 10, 80, Color.ORANGE, 5);
-		
+
 		leftScore = 0;
 		rightScore = 0;
 
-		
+
 
 		keys = new boolean[4];
 
-    
+
     	setBackground(Color.WHITE);
 		setVisible(true);
-		
+
 		new Thread(this).start();
 		addKeyListener(this);		//starts the key thread to log key strokes
 	}
-	
+
    public void update(Graphics window){
 	   paint(window);
    }
@@ -71,7 +71,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
-		
+
 		//see if ball hits left wall or right wall
 		if(ball.getX() < 3) {
 			rightScore++;
@@ -103,7 +103,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 			ball.setYSpeed(ySpeed);
 			ball.draw(graphToBack, ball.getColor());
 		}
-		
+
 		//see if the ball hits the top or bottom wall 
 		if(!(ball.getY()>=1 && ball.getY()<=560))
 		{
@@ -125,8 +125,8 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 				ball.setXSpeed(-1 * ball.getXSpeed());
 			}
 		}
-		
-		
+
+
 		//see if the ball hits the right paddle
 		if((ball.getX() >= rightPaddle.getX() - rightPaddle.getWidth() + Math.abs(ball.getXSpeed())) &&
 				(ball.getY() >= rightPaddle.getY() && 
@@ -149,24 +149,24 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		else if(keys[1] == true) {
 			leftPaddle.moveDownAndDraw(graphToBack);
 		}
-		
+
 		if(keys[2] == true) {
 			rightPaddle.moveUpAndDraw(graphToBack);
 		}
-		
+
 		else if(keys[3] == true) {
 			rightPaddle.moveDownAndDraw(graphToBack);
 		}
 
 
-		
+
 		graphToBack.setColor(Color.WHITE);
 		graphToBack.drawString("Left Score: " + leftScore, 300, 30);
 		graphToBack.drawString("Right Score: " + rightScore, 400, 30);
 		graphToBack.setColor(Color.RED);
 		graphToBack.drawString("Left Score: " + leftScore, 300, 30);
 		graphToBack.drawString("Right Score: " + rightScore, 400, 30);
-		
+
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
 
@@ -193,7 +193,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 	}
 
 	public void keyTyped(KeyEvent e){}
-	
+
    public void run()
    {
    	try
