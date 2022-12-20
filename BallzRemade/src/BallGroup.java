@@ -27,16 +27,15 @@ public class BallGroup
 	}
 
 	//post - draw each Ammo
-	public void moveAndDrawEmAll( Graphics window )
+	public void moveAndDrawEmAll( Graphics window , NumberBlocksss blocks)
 	{
 		for(int i = 0; i<balls.size(); i++) {
-
-			balls.get(i).adjustSpeed();
+			balls.get(i).adjustSpeed(blocks);
 			if(balls.get(i).isExisting()) {
 				balls.get(i).moveAndDraw(window);
 			}
 			else balls.remove(balls.indexOf(balls.get(i)));
-			System.out.println(balls.size());
+			
 		}
 	}
 
