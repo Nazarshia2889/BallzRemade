@@ -6,7 +6,21 @@ public class NumberBlocksss {
 	private List<NumberBlock> blocks;
 	
 	public NumberBlocksss() {
+		this(0, 1);
+	}
+	public NumberBlocksss(int amount, int val) {
 		blocks = new ArrayList<NumberBlock>();
+		int xPos = 0;
+		int yPos = 0;
+		
+		for(int i=0; i<amount; i++) {
+			new NumberBlock(100, 100, xPos, yPos, val);
+			xPos+=105;
+			if(xPos > 700) {
+				xPos=0;
+				yPos+=105;
+			}
+		}
 	}
 	
 	public void add(NumberBlock block) {
@@ -18,6 +32,7 @@ public class NumberBlocksss {
 			block.draw(window);
 		}
 	}
+	
 	
 	public void destroy() {
 		for(int i = 0; i < blocks.size(); i++) {

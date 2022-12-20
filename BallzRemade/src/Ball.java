@@ -4,6 +4,8 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ball extends Block {
 	private int xSpeed;
@@ -88,7 +90,40 @@ public class Ball extends Block {
 		window.setColor(temp);
 	}
 
-	public void adjustSpeed() {
+	public void adjustSpeed(NumberBlocksss blocks) {
+		//check if it hits a numberBlock
+		List<NumberBlock> blockss = blocks.getList();
+		for(int i = 0; i<blockss.size(); i++) {
+			NumberBlock b = blockss.get(i);
+			//right
+			if(getX() > b.getX()+b.getWidth() && getX() < b.getX()+b.getWidth()+5
+					&& getY()+getHeight() < b.getY()+b.getHeight() && getY() > b.getY()) {
+				setXSpeed(-getXSpeed());
+				b.setNum(b.getNum()-1);
+				System.out.println("right");
+			}
+			//left
+			else if(getX()+getWidth() < b.getX() && getX()+getWidth() > b.getX()-5
+					&& getY()+getHeight() < b.getY()+b.getHeight() && getY() > b.getY()) {
+				setXSpeed(-getXSpeed());
+				b.setNum(b.getNum()-1);
+				System.out.println("left");
+			}
+			//top
+			else if(getY()+getHeight() < b.getY() && getY()+getHeight() > b.getY()-5
+					&& getX() < b.getX()+b.getWidth() && getX() > b.getX()) {
+				setYSpeed(-getYSpeed());
+				b.setNum(b.getNum()-1);
+				System.out.println("top");
+			}
+			//bottom
+			else if(getY() > b.getY()+b.getHeight() && getY() < b.getY()+b.getHeight()+5
+					&& getX() < b.getX()+b.getWidth() && getX() > b.getX()) {
+				setYSpeed(-getYSpeed());
+				b.setNum(b.getNum()-1);
+				System.out.println("bot");
+			}
+		}
 		if (getX() < 3) {
 			setXSpeed(-xSpeed);
 			setYSpeed(ySpeed);

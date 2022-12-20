@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 public class Ballz extends Canvas implements KeyListener, Runnable
 {
 	private Launcher launcher;
-	private ArrayList<NumberBlock> blocks;
+	private NumberBlocksss blocks;
 	private BallGroup balls;
 	private boolean[] keys;
 	private BufferedImage back;
@@ -31,16 +31,16 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 //		ball = new SpeedUpBall(100, 100, 10, 10, Color.RED, xSpeed, ySpeed);
 
 		launcher = new Launcher(400, 550, 100, 20, Color.GREEN);
-		blocks = new ArrayList<NumberBlock>();
+		blocks = new NumberBlocksss();
 		balls = new BallGroup();
-		blocks.add(new NumberBlock(100, 100, 30, 30, 42));
-		balls.add(new Ball(500, 200, 10, 10, Color.BLACK, -1, -1));
+		blocks.add(new NumberBlock(100, 100, 30, 30, 17));
+		balls.add(new Ball(500, 300, 10, 10, Color.BLACK, -1, -1));
 		
 
 		keys = new boolean[5];
 
 
-    	setBackground(Color.WHITE);
+    	setBackground(Color.GRAY);
 		setVisible(true);
 
 		new Thread(this).start();
@@ -65,8 +65,8 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
 		launcher.draw(graphToBack);
-		for(NumberBlock n : blocks) n.draw(graphToBack);
-		balls.moveAndDrawEmAll(graphToBack);
+		blocks.drawEmAll(graphToBack);
+		balls.moveAndDrawEmAll(graphToBack, blocks);
 
 	
 		if(keys[0] == true) {

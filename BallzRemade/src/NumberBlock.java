@@ -8,18 +8,22 @@ public class NumberBlock extends Block {
 	public NumberBlock() {
 		super(0, 0);
 		num=0;
+		calculateColor();
 	}
 	public NumberBlock(int num) {
 		super(0, 0);
 		this.num=num;
+		calculateColor();
 	}
 	public NumberBlock(int x, int y, int num) {
 		super(x, y);
 		this.num=num;
+		calculateColor();
 	}
 	public NumberBlock(int x, int y, int width, int height, int num) {
 		super(x, y, width, height);
 		this.num=num;
+		calculateColor();
 	}
 	
 	public void calculateColor() {
@@ -47,7 +51,7 @@ public class NumberBlock extends Block {
 	public void draw(Graphics window) {
 		window.setColor(getColor());
 	    window.fillRect(getX(), getY(), getWidth(), getHeight());
-	    window.setColor(Color.WHITE);
+	    window.setColor(Color.GRAY);
 	    window.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 	    window.drawString(num+"", getX(), getY()+getHeight());
 	}
