@@ -106,7 +106,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			keys[4] = true;
 		}
-		repaint();
+
 	}
 
 	public void keyReleased(KeyEvent e)
@@ -126,7 +126,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			keys[4] = false;
 		}
-		repaint();
+
 	}
 
 	public void keyTyped(KeyEvent e){}

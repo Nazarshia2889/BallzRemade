@@ -15,7 +15,7 @@ public class NumberBlock extends Block {
 	}
 	public NumberBlock(int x, int y, int num) {
 		super(x, y);
-		this.num=num;
+		this.num=num
 	}
 	public NumberBlock(int x, int y, int width, int height, int num) {
 		super(x, y, width, height);
