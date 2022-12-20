@@ -49,6 +49,6 @@ public class NumberBlock extends Block {
 	    window.fillRect(getX(), getY(), getWidth(), getHeight());
 	    window.setColor(Color.WHITE);
 	    window.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-	    window.drawString(num+"", getX(), getY());
+	    window.drawString(num+"", getX(), getY()+getHeight());
 	}
 }
