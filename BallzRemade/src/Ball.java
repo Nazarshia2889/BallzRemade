@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Ball extends Block {
-	private int size;
 	private int xSpeed;
 	private int ySpeed;
 	private boolean exists;
@@ -15,6 +14,7 @@ public class Ball extends Block {
 		super(200, 200);
 		xSpeed = 3;
 		ySpeed = 1;
+		exists=true;
 	}
 
 	// add the other Ball constructors
@@ -22,36 +22,42 @@ public class Ball extends Block {
 		super(x, 150, 10, 10, Color.black);
 		xSpeed = 3;
 		ySpeed = 1;
+		exists=true;
 	}
 
 	public Ball(int x, int y) {
 		super(x, y, 10, 10, Color.black);
 		xSpeed = 3;
 		ySpeed = 1;
+		exists=true;
 	}
 
 	public Ball(int x, int y, int z) {
 		super(x, y, z, z, Color.black);
 		xSpeed = 3;
 		ySpeed = 1;
+		exists=true;
 	}
 
 	public Ball(int x, int y, int w, int h, Color c) {
 		super(x, y, w, h, c);
 		xSpeed = 3;
 		ySpeed = 1;
+		exists=true;
 	}
 
 	public Ball(int x, int y, int w, int h, Color c, int xs) {
 		super(x, y, w, h, c);
 		xSpeed = xs;
 		ySpeed = 1;
+		exists=true;
 	}
 
 	public Ball(int x, int y, int w, int h, Color c, int xs, int ys) {
 		super(x, y, w, h, c);
 		xSpeed = xs;
 		ySpeed = ys;
+		exists=true;
 	}
 
 	// add the set methods
@@ -63,10 +69,6 @@ public class Ball extends Block {
 		ySpeed = ys;
 	}
 
-	public void setSize(int z) {
-		size = z;
-	}
-
 	public boolean isExisting() {
 		return exists;
 	}
@@ -74,15 +76,15 @@ public class Ball extends Block {
 	public void moveAndDraw(Graphics window) {
 		// draw a white ball at old ball location
 		Color temp = window.getColor();
-		window.setColor(Color.GRAY); // whatever background color is
-		window.fillOval(getX(), getY(), size, size);
-
+		window.setColor(Color.WHITE); // whatever background color is
+		window.fillOval(getX(), getY(), getWidth(), getHeight());
+	
 		setX(getX() + xSpeed);
 		setY(getY() + ySpeed);
 
 		// draw the ball at its new location
-		window.setColor(Color.blue);
-		window.fillOval(getX(), getY(), size, size);
+		window.setColor(getColor());
+		window.fillOval(getX(), getY(), getWidth(), getHeight());
 		window.setColor(temp);
 	}
 
@@ -119,9 +121,6 @@ public class Ball extends Block {
 		return ySpeed;
 	}
 
-	public int getSize() {
-		return size;
-	}
 
 	// add a toString() method
 	public String toString() {

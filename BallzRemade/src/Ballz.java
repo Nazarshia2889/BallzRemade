@@ -34,10 +34,10 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		blocks = new ArrayList<NumberBlock>();
 		balls = new BallGroup();
 		blocks.add(new NumberBlock(100, 100, 30, 30, 42));
-		balls.add(new Ball(500, 200));
+		balls.add(new Ball(500, 200, 10, 10, Color.BLACK, -1, -1));
 		
 
-		keys = new boolean[4];
+		keys = new boolean[5];
 
 
     	setBackground(Color.WHITE);
@@ -106,7 +106,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			keys[4] = true;
 		}
-		repaint();
+
 	}
 
 	public void keyReleased(KeyEvent e)
@@ -126,7 +126,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			keys[4] = false;
 		}
-		repaint();
+
 	}
 
 	public void keyTyped(KeyEvent e){}
