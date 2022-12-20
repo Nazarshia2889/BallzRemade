@@ -21,16 +21,22 @@ public class BallGroup
 
 	public void add(Ball al)
 	{
+		System.out.println(balls.size());
 		balls.add(al);
+		System.out.println(balls.size());
 	}
 
 	//post - draw each Ammo
 	public void moveAndDrawEmAll( Graphics window )
 	{
-		for(Ball shot: balls) {
-			shot.adjustSpeed();
-			if(shot.isExisting()) shot.moveAndDraw(window);
-			else balls.remove(balls.indexOf(shot));
+		for(int i = 0; i<balls.size(); i++) {
+
+			balls.get(i).adjustSpeed();
+			if(balls.get(i).isExisting()) {
+				balls.get(i).moveAndDraw(window);
+			}
+			else balls.remove(balls.indexOf(balls.get(i)));
+			System.out.println(balls.size());
 		}
 	}
 
