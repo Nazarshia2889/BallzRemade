@@ -30,7 +30,7 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 //		ball = new Ball(100, 100, 10, 10, Color.RED, 1, 2);
 //		ball = new SpeedUpBall(100, 100, 10, 10, Color.RED, xSpeed, ySpeed);
 
-		launcher = new Launcher(400, 550, 100, 20, Color.GREEN);
+		launcher = new Launcher(500, 580, 20, 20, Color.GREEN, 1, -20);
 		blocks = new NumberBlocksss();
 		balls = new BallGroup();
 		blocks.add(new NumberBlock(100, 100, 30, 30, 17));
@@ -64,10 +64,10 @@ public class Ballz extends Canvas implements KeyListener, Runnable
 		//create a graphics reference to the back ground image
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
-		launcher.draw(graphToBack);
+//		launcher.draw(graphToBack);
 		blocks.drawEmAll(graphToBack);
 		balls.moveAndDrawEmAll(graphToBack, blocks);
-
+		launcher.rotateAndDraw(graphToBack);
 	
 		if(keys[0] == true) {
 			

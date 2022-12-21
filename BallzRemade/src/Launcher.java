@@ -104,7 +104,7 @@ public class Launcher extends Block
    public void moveAndDraw(Graphics window)
    {
    	//draw a white line at old line location
-	  draw(window, Color.WHITE);
+	  draw(window, Color.GRAY);
 
       setX(getX() + xSpeed);
       
@@ -114,10 +114,11 @@ public class Launcher extends Block
    }
    
    public void rotateAndDraw(Graphics window) {
-	   draw(window, Color.WHITE);
+	   draw(window, Color.GRAY);
 	   
 	   setTopX(topX + rotateSpeed);
-	   setTopY((int) Math.sqrt(Math.pow(getHeight(), 2) - Math.pow(topX, 2)));
+	   System.out.println(topX+" "+getX());
+	   setTopY((int) Math.sqrt(Math.pow(getHeight(), 2) - Math.pow(topX-getX(), 2)));
 	   
 	   draw(window, this.getColor());
    }
