@@ -130,28 +130,7 @@ public class Launcher extends Block
 		//draw the ball at its new location
    }
    
-   public void rotateLeftAndDraw(Graphics window, int xSpd, int ySpd) {
-	   
-	   window.setColor(Color.GRAY);
-	   window.drawLine(getX(), getY(), topX, topY);
-	   
-	  
-	   window.setColor(getColor());
-	   window.drawLine(getX(), getY(), topX - xSpd, topY - ySpd);
-	   
-   }
-   
-   public void rotateRightAndDraw(Graphics window) {
-	   draw(window, Color.GRAY);
-	   
-	   setX((int) (Math.cos(Math.PI) * getX() - (getY() * Math.sin(Math.PI))));
-	   setY((int) (Math.cos(Math.PI) * getX() + (getY() * Math.sin(Math.PI))));
-	   
-	   System.out.println(getX());
-	   System.out.println(getY());
-	   
-	   draw(window, this.getColor());
-   }
+  
    
 	public boolean equals(Object obj)
 	{
