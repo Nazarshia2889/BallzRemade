@@ -34,7 +34,10 @@ public class BallGroup
 			if(balls.get(i).isExisting()) {
 				balls.get(i).moveAndDraw(window);
 			}
-			else balls.remove(balls.indexOf(balls.get(i)));
+			else {
+				balls.get(i).destroy(window);
+				balls.remove(balls.indexOf(balls.get(i)));
+			}
 			
 		}
 	}

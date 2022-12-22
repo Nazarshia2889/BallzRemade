@@ -1,5 +1,9 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
 
 public class Launcher extends Block
 {
@@ -7,6 +11,7 @@ public class Launcher extends Block
 	private int topX;
 	private int topY;
 	private int rotateSpeed;
+	private int initalAngle;
 
 	public Launcher()
 	{
@@ -65,6 +70,7 @@ public class Launcher extends Block
 		topX = x;
 		topY = y - height;
 		rotateSpeed = newRotateSpeed;
+		initalAngle = 90;
 	}
 	
 	
@@ -93,32 +99,56 @@ public class Launcher extends Block
    }
   
    
-   public void draw(Graphics window, Color col)
-   {
-	   window.setColor(col);
-	   window.drawLine(topX, topY, getX(), getY());
-	   
-   }
    
 
-   public void moveAndDraw(Graphics window)
+   public void moveRightAndDraw(Graphics window)
    {
    	//draw a white line at old line location
 	  draw(window, Color.GRAY);
 
-      setX(getX() + xSpeed);
+	  if(getX() < 800 - getWidth()) {
+		  setX(getX() + xSpeed);
+	   }
       
       draw(window, this.getColor());
 
 		//draw the ball at its new location
    }
    
-   public void rotateAndDraw(Graphics window) {
+   public void moveLeftAndDraw(Graphics window)
+   {
+   	//draw a white line at old line location
+	  super.draw(window, Color.GRAY);
+
+	  if(getX() > 5) {
+		  setX(getX() - xSpeed);
+	   }
+//      setTopX(topX - xSpeed);
+      
+      super.draw(window, this.getColor());
+
+		//draw the ball at its new location
+   }
+   
+   public void rotateLeftAndDraw(Graphics window, int xSpd, int ySpd) {
+	   
+	   window.setColor(Color.GRAY);
+	   window.drawLine(getX(), getY(), topX, topY);
+	   
+	  
+	   window.setColor(getColor());
+	   window.drawLine(getX(), getY(), topX - xSpd, topY - ySpd);
+	   
+   }
+   
+   public void rotateRightAndDraw(Graphics window) {
 	   draw(window, Color.GRAY);
 	   
-	   setTopX(topX + rotateSpeed);
-	   System.out.println(topX+" "+getX());
-	   setTopY((int) Math.sqrt(Math.pow(getHeight(), 2) - Math.pow(topX-getX(), 2)));
+	   setX((int) (Math.cos(Math.PI) * getX() - (getY() * Math.sin(Math.PI))));
+	   setY((int) (Math.cos(Math.PI) * getX() + (getY() * Math.sin(Math.PI))));
+	   
+	   System.out.println(getX());
+	   System.out.println(getY());
 	   
 	   draw(window, this.getColor());
    }

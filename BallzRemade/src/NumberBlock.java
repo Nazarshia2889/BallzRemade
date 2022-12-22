@@ -27,13 +27,13 @@ public class NumberBlock extends Block {
 	}
 	
 	public void calculateColor() {
-		if(num <= 15) {
+		if(num <= 7) {
 			setColor(Color.YELLOW);
-		}else if(num <= 30) {
+		}else if(num <= 14) {
 			setColor(Color.RED);
-		}else if(num <= 45) {
+		}else if(num <= 21) {
 			setColor(Color.GREEN);
-		}else if(num <= 60) {
+		}else if(num <= 28) {
 			setColor(Color.BLUE);
 		}else {
 			setColor(Color.MAGENTA);
@@ -46,6 +46,11 @@ public class NumberBlock extends Block {
 	}
 	public int getNum() {
 		return num;
+	}
+	
+	public void destroy(Graphics window) {
+		window.setColor(Color.GRAY);
+	    window.fillRect(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics window) {

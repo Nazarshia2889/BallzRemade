@@ -100,8 +100,8 @@ public class Block implements Locatable
    public void draw(Graphics window)
    {
    	//uncomment after you write the set and get methods
-      window.setColor(color);
-      window.fillRect(getX(), getY(), getWidth(), getHeight());
+	   window.setColor(color);
+	   window.fillRect(getX(), getY(), getWidth(), getHeight());
    }
 
    public void draw(Graphics window, Color col)

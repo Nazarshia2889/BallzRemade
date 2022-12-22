@@ -78,7 +78,7 @@ public class Ball extends Block {
 	public void moveAndDraw(Graphics window) {
 		// draw a white ball at old ball location
 		Color temp = window.getColor();
-		window.setColor(Color.WHITE); // whatever background color is
+		window.setColor(Color.GRAY); // whatever background color is
 		window.fillOval(getX(), getY(), getWidth(), getHeight());
 	
 		setX(getX() + xSpeed);
@@ -96,7 +96,13 @@ public class Ball extends Block {
 		for(int i = 0; i<blockss.size(); i++) {
 			NumberBlock b = blockss.get(i);
 			//right
-			if(getX() > b.getX()+b.getWidth() && getX() < b.getX()+b.getWidth()+5
+			if(getY() > b.getY()+b.getHeight() && getY() < b.getY()+b.getHeight()+5
+					&& getX() < b.getX()+b.getWidth() && getX()+getWidth() > b.getX()) {
+				setYSpeed(-getYSpeed());
+				b.setNum(b.getNum()-1);
+				System.out.println("bot");
+			}
+			else if(getX() > b.getX()+b.getWidth() && getX() < b.getX()+b.getWidth()+5
 					&& getY()+getHeight() < b.getY()+b.getHeight() && getY() > b.getY()) {
 				setXSpeed(-getXSpeed());
 				b.setNum(b.getNum()-1);
@@ -111,18 +117,13 @@ public class Ball extends Block {
 			}
 			//top
 			else if(getY()+getHeight() < b.getY() && getY()+getHeight() > b.getY()-5
-					&& getX() < b.getX()+b.getWidth() && getX() > b.getX()) {
+					&& getX() < b.getX()+b.getWidth() && getX() >= b.getX()) {
 				setYSpeed(-getYSpeed());
 				b.setNum(b.getNum()-1);
 				System.out.println("top");
 			}
 			//bottom
-			else if(getY() > b.getY()+b.getHeight() && getY() < b.getY()+b.getHeight()+5
-					&& getX() < b.getX()+b.getWidth() && getX() > b.getX()) {
-				setYSpeed(-getYSpeed());
-				b.setNum(b.getNum()-1);
-				System.out.println("bot");
-			}
+			
 		}
 		if (getX() < 3) {
 			setXSpeed(-xSpeed);
@@ -138,9 +139,14 @@ public class Ball extends Block {
 			setYSpeed(-ySpeed);
 		} else if (!(getY() <= 560)) {
 			exists = false;
-			setXSpeed(0);
-			setYSpeed(0);
+//			setXSpeed(0);
+//			setYSpeed(0);
 		}
+	}
+	
+	public void destroy(Graphics window) {
+		window.setColor(Color.gray);
+		window.fillOval(getX(), getY(), getWidth(), getHeight());
 	}
 
 	public boolean equals(Object obj) {
